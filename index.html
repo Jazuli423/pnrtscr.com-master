@@ -187,7 +187,37 @@
         </div>
 
         <div class="scare">
-            <video id="video" class="video" src="Assets/video.mp4" loop autoplay muted playsinline></video>
+            <video id="video" class="video" src="Assets/video.mp4" loop playsinline></video>
+
+<button id="playBtn" style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 8px;
+">Putar Video</button>
+
+<script>
+    const video = document.getElementById("video");
+    const playBtn = document.getElementById("playBtn");
+
+    playBtn.addEventListener("click", () => {
+        video.muted = false;
+        video.play();
+        playBtn.style.display = "none";
+
+        // Minta fullscreen jika didukung
+        const { documentElement } = document;
+        if(documentElement.requestFullscreen) documentElement.requestFullscreen();
+        else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
+    });
+</script>
         </div>
 
         <script type="text/javascript">
